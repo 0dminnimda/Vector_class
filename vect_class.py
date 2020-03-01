@@ -84,13 +84,19 @@ class Vector:
         return np.linalg.norm(se.e-se.s)
         
     def ang(se):
-        return pi*8/16-atan2(*(se.e-se.s))
+        return pi*12/16-atan2(*(se.e-se.s))
         
     def set_ang(se, alpha):
         rad = se.ab#abs(se)
         se.e[0] = se.s[0] + rad * cos(alpha)
         se.e[1] = se.s[1] + rad * sin(alpha)
         #return Vector(x, y)
+        
+    def turn(se, alp, pt):
+        pass
+        
+    def link(se, oth):
+        se.link = oth
         
     def set_abs(se, rad):
         #rad = se.ab
@@ -132,8 +138,8 @@ class Vector:
                 if 0 <= i <= se._n:
                     se.e[i] = se.s[i]-se.ptsv()[i]
                     
-    def draw(se, pd):
-        pd.line(se.s, se.e, "red")
+    def draw(se, pd, r=1):
+        pd.line(se.s, se.e, "red", r)
         #return (0, 0), (se.x, se.y)
         
     def pts(se):
